@@ -3,22 +3,27 @@
 This repository contains the source code to the Lightning Data Viewer. This viewer uses data collected by Lightning Imaging Sensor (LIS) installed on International Space Station (ISS).
 
 
-Currently, the viewer provide ability to view only sample data collected by ISS LIS instrument during March 4th 2019 Tornado Outbreak in Alabama, Huntsville.
+Currently the viewer provides ability to view only sample data collected by ISS LIS instrument during March 4th 2019 Tornado Outbreak in Alabama, Huntsville.
 
 Screenshot:
+
 ![Demo Image](static/images/demo/demo.gif)
 
 Please file report bug and feature requests directly from the app [https://lightning-data-viewer.appspot.com/report](https://lightning-data-viewer.appspot.com/report) and Login using Github.
 ![Issue Submit](static/images/demo/bug-feature.png)
 
 ### Requirements
-The source code requires Python 3.6+ and package requirements are mentioned in requirements.txt file
+The source code requires Python 3.6+. Individual package requirements are mentioned in requirements.txt file
 
 ### Running
 Rename sample.config.py file to config.py file and change values for
 - Cesium Token
 - Github Client ID
 - Github Client Secret
+- Github Access Key
+- Fullstory Org Code
+- Fullstory API Key
+- Custom secret key
 
 Create Python virtual environment. Please refer [Python Docs](https://docs.python.org/3/library/venv.html) for more info
 ```bash
