@@ -1,0 +1,59 @@
+#cesiumContainer {
+    height: 700px;
+}
+
+#chartContainer {
+    height: 200px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.cesium-viewer-toolbar {
+    display: none;
+}
+
+.cesium-animation-rectButton {
+    display: none;
+}
+
+.cesium-viewer-animationContainer {
+    display: none;
+}
+
+.cesium-viewer-timelineContainer {
+    display: none;
+}
+
+.checkbox-inline {
+    margin-right: 50px;
+}
+
+.logo {
+    margin-top: 7px;
+    margin-right: 7px;
+    width: 30px;
+    height: 30px;
+}
+
+.center-block {
+    display: block;
+    margin-left: 33%;
+}
+
+#report-bug {
+    color: #5cb85c;
+    font-weight: bolder;
+}
+
+legend {
+    font-size: 15px;
+}
+
+label {
+    font-size: 10px;
+    font-weight: 100;
+}
+
+.ui-dialog-titlebar-close {
+    display: none;
+}

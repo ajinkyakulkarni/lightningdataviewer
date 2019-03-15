@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- external CSS files -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/redmond/jquery-ui.css">
+    <link rel="stylesheet" href="static/lib/Cesium/Widgets/widgets.css">
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+
+    <!-- custom CSS files -->
+    <link rel="stylesheet" href="static/css/style.css">
+
+    <title>ISS Lightning Animation Viewer</title>
+</head>
+<body>
+
+<div class="container-fluid">
+
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-left" href="#"> <img src="static/favicon.ico" class="logo"></a>
+                <a class="navbar-brand" href="#">ISS Lightning Animation Viewer</a>
+
+            </div>
+
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="https://github.com/ajinkyakulkarni/lightningdataviewer">About</a></li>
+                    <li><a id="report-bug" href="#"> Report Bug or Feature Request </a></li>
+                </ul>
+
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+
+    <div class="text-center ">
+        <p> Showing animation of lightning flashes and statistics as seen by ISS LIS instrument
+            on {{ data.date }}</p>
+
+
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+
+            <div class="center-block">
+                <label class="checkbox-inline">
+                    <input id="toggle-2d" type="checkbox" data-toggle="toggle"> 3D
+                </label>
+
+                <label class="checkbox-inline">
+                    <input id="toggle-clouds" type="checkbox" data-toggle="toggle"> Clouds
+                </label>
+
+                <label class="checkbox-inline">
+                    <input id="toggle-animation" type="checkbox" checked data-toggle="toggle"> Animation
+                </label>
+
+            </div>
+
+        </div>
+
+    </div>
+    <hr/>
+    <br/>
+
+
+</div>
+<div id="chartContainer"></div>
+<div id="cesiumContainer"></div>
+</div>
+
+
+<div id="dialog-form" name="dialog-form" title="Report Bug or Feature Request">
+    <p>Please type the description of your bug or feature</p>
+
+    <form>
+        <fieldset>
+            <label for="issue-title">Title</label> <br/>
+            <input type="text" name="issue-title" id="issue-title" value=""
+                   class="text ui-widget-content ui-corner-all">
+            <br/>
+            <label for="issue-body">Description</label><br/>
+            <textarea type="textarea" name="issue-body" id="issue-body" rows="4" cols="30"
+                      class="text ui-widget-content ui-corner-all"></textarea>
+
+            <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+        </fieldset>
+
+        <fieldset>
+            <legend>Select a Github issue type:</legend>
+            <label for="radio-bug">Bug</label>
+            <input type="radio" name="radio" id="radio-bug" checked value="bug">
+            <label for="radio-feature">Feature</label>
+            <input type="radio" name="radio" id="radio-feature" value="feature">
+
+        </fieldset>
+
+    </form>
+</div>
+
+
+<!-- fullstory integration code-->
+<script>
+    window['_fs_debug'] = false;
+    window['_fs_host'] = 'fullstory.com';
+    window['_fs_org'] = '{{ fs_org_code }}';
+    window['_fs_namespace'] = 'FS';
+    (function (m, n, e, t, l, o, g, y) {
+        if (e in m) {
+            if (m.console && m.console.log) {
+                m.console.log('FullStory namespace conflict. Please set window["_fs_namespace"].');
+            }
+            return;
+        }
+        g = m[e] = function (a, b, s) {
+            g.q ? g.q.push([a, b, s]) : g._api(a, b, s);
+        };
+        g.q = [];
+        o = n.createElement(t);
+        o.async = 1;
+        o.src = 'https://' + _fs_host + '/s/fs.js';
+        y = n.getElementsByTagName(t)[0];
+        y.parentNode.insertBefore(o, y);
+        g.identify = function (i, v, s) {
+            g(l, {uid: i}, s);
+            if (v) g(l, v, s)
+        };
+        g.setUserVars = function (v, s) {
+            g(l, v, s)
+        };
+        g.event = function (i, v, s) {
+            g('event', {n: i, p: v}, s)
+        };
+        g.shutdown = function () {
+            g("rec", !1)
+        };
+        g.restart = function () {
+            g("rec", !0)
+        };
+        g.consent = function (a) {
+            g("consent", !arguments.length || a)
+        };
+        g.identifyAccount = function (i, v) {
+            o = 'account';
+            v = v || {};
+            v.acctId = i;
+            g(o, v)
+        };
+        g.clearUserCookie = function () {
+        };
+    })(window, document, window['_fs_namespace'], 'script', 'user');
+</script>
+
+<!-- external javascript files -->
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"
+        integrity="sha256-7/yoZS3548fXSRXqc/xYzjsmuW3sFKzuvOCHd06Pmps=" crossorigin="anonymous"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/boost.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"
+        integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
+<script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script
+        src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"
+        integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+<script type="text/javascript" src="static/lib/Cesium/Cesium.js"></script>
+<script type="text/javascript">
+    Cesium.Ion.defaultAccessToken = "{{ data.cesium_key }}";
+</script>
+<script type="text/javascript" src="static/lib/gibs.js"></script>
+
+<!-- custom javascript files -->
+<script type="text/javascript" src="static/js/main.js"></script>
+
+</body>
+</html>

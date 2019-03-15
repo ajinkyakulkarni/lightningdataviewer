@@ -1,0 +1,12 @@
+config.py
+venv
+.pytest_cache
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+.ebignore
+appengine_config.py
+.idea
+__pycache__
+.DS_Store
