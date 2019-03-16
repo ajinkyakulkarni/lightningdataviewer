@@ -68,6 +68,7 @@ You should now see app running at [http://localhost:5000/](http://localhost:5000
 This application is currently deployed to Digital Ocean. Please follow instructions mentioned [here](https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-uswgi-and-nginx-on-ubuntu-18-04) to setup this application on a Digital Ocean droplet.
 
 ## Future Work
+- Add ISS Orbits
 - Ability to download data points
 - View more ISS LIS data products
 - Integration with PostGIS
