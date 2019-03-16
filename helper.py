@@ -45,7 +45,7 @@ def get_fs_session(uid, fs_api_key):
                       headers={'Authorization': 'Basic ' + fs_api_key, "Content-Type": "application/json"})
 
     # if authorized return session URLs
-    if r.status_code == 401:
+    if r.status_code == 200:
         return r.json()
     else:
         print("Unauthorized request to Fullstory REST API")

@@ -8,6 +8,7 @@ import helper
 import os
 import tempfile
 import html
+import json
 
 app = Flask(__name__)
 
@@ -192,8 +193,11 @@ def fullstory_sessions():
     for user in users:
         uid = helper.get_uid(secret_key, user.github_email)
         fullstory_uids[uid] = []
-        session_urls = helper.get_fs_session(uid, fs_api_key)
-        fullstory_uids[uid] = {"session_urls": session_urls}
+        sessions = helper.get_fs_session(uid, fs_api_key)
+        session_urls = []
+        for session in sessions:
+            session_urls.append(session["FsUrl"])
+        fullstory_uids[uid] = {"session_urls": session_urls,"issues":[]}
 
     github_obj = GithubAPI(github_access_token)
 
@@ -208,7 +212,7 @@ def fullstory_sessions():
             r1 = re.findall(r"Unique issue identifier: (.*)", issue.body)
             if len(r1) > 0:
                 uid_from_issue = r1[0]
-                fullstory_uids[uid_from_issue].append(issue)
+                fullstory_uids[uid_from_issue]["issues"].append(issue.html_url)
 
     return jsonify(fullstory_uids)
 

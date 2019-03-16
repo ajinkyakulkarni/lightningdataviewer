@@ -32,7 +32,7 @@ source venv/bin/activate
 ```
 Then install Python dependencies
 ```bash
-pip install -t lib -r requirements.txt
+pip install -r requirements.txt
 ```
 
 Run the unit tests
