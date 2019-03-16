@@ -21,7 +21,7 @@ jQuery.getJSON("/user", function (data) {
         uid = data.uid
     }
 
-    if (uid !== false) {
+    if (uid !== false && uid !== undefined) {
         FS.identify(uid);
     }
 
