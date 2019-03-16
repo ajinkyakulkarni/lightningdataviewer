@@ -79,7 +79,10 @@ This application is currently deployed to Digital Ocean. Please follow instructi
 - Configure CD/CI system for this app
 - Better organization of code
 
-### Credits
+## License
+This application's code is licensed under MIT license. The individually used libraries are licensed under their own respective licenses.
+
+## Credits
 Sample ISS LIS data is obtained from NASA GHRC DAAC. Citation is as below -
 ```
 Blakeslee, Richard J.. 2017. NRT Lightning Imaging Sensor (LIS) on International Space Station (ISS) Provisional Science Data [indicate subset used]. Dataset available online from the NASA Global Hydrology Resource Center DAAC, Huntsville, Alabama, U.S.A. 
