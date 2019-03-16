@@ -5,11 +5,11 @@ This repository contains the source code to the Lightning Data Viewer. This view
 
 Currently the viewer provides ability to view only sample data collected by ISS LIS instrument during March 4th 2019 Tornado Outbreak in Alabama, Huntsville.
 
-Screenshot:
+### Screenshot:
 
 ![Demo Image](static/images/demo/demo.gif)
 
-Please file report bug and feature requests directly from the app [https://lightning-data-viewer.appspot.com/report](https://lightning-data-viewer.appspot.com/report) and Login using Github.
+Please file report bug and feature requests directly from the app [https://lightning-data-viewer.appspot.com/report](https://lightning-data-viewer.appspot.com/report). You will need to login using Github.
 ![Issue Submit](static/images/demo/bug-feature.png)
 
 ### Requirements
@@ -64,7 +64,8 @@ You should now see app running at [http://localhost:5000/](http://localhost:5000
 - templates - HTML templates
 - tests - unit tests for the application
 
-
+## Deployment
+This application is currently deployed to Digital Ocean. Please follow instructions mentioned [here](https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-uswgi-and-nginx-on-ubuntu-18-04) to setup this application on a Digital Ocean droplet.
 
 ## Future Work
 - Ability to download data points
@@ -74,6 +75,8 @@ You should now see app running at [http://localhost:5000/](http://localhost:5000
 - Make integration with Github and Fullstory optional
 - Add more unit tests for backend
 - Add unit tests for frontend 
+- Add integration test
+- Configure CD/CI system for this app
 - Better organization of code
 
 ### Credits
